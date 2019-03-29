@@ -21,8 +21,9 @@ int main(int argc, char** argv ) {
 	
 	cout << "Opening file a.txt\n"; // << argv[1] << "\n";
 	
-	HANDLE f = CreateFile(L"a.txt", 0, 0, 0, OPEN_EXISTING, 0, 0);
-	
+	HANDLE f = CreateFile(L"a.txt", GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, 0, 0);
+	if(f==INVALID_HANDLE_VALUE)
+		cout << "Error opening a.txt!";
     QueryPerformanceFrequency((LARGE_INTEGER *)&freq);// запрашиваем число тиков в 1 сек
 
 
